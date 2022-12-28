@@ -1,27 +1,19 @@
 const express = require('express')
-const axios = require('axios')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
 
+const homeRouter = require('./routes/home')
+const userInputRouter = require('./routes/userInput')
 
-app.use(bodyParser.json());
+
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors())
 
-app.get('/', (req, res) => {
-    res.send('hello')
-})
 
-app.get('/:userInput', (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    const { userInput } = req.params
-    axios.get(`http://${userInput}/ads.txt`)
-        .then(response => {
-            res.json(response.data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-})
+app.use(homeRouter)
+app.use(userInputRouter)
 
 
 
