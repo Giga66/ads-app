@@ -3,15 +3,12 @@ const router = express.Router()
 const axios = require('axios')
 const getDomains = require('../controllers/getDomains')
 
-router.get('/getAds', async (req, res) => {
-    const { website } = req.query
+router.get('/', async (req, res) => {
     try {
-        const response = await axios.get(`https://${website}/ads.txt`)
+        const response = await axios('msn.com/ads.txt')
         const domains = getDomains(response)
         res.json(domains)
     } catch (error) {
         console.log(error)
     }
 })
-
-module.exports = router
