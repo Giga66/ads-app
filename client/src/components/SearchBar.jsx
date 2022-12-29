@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const SearchBar = () => {
     const [data, setData] = useState('')
@@ -6,7 +6,7 @@ const SearchBar = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/${userInput}`, {mode: 'cors'})
+            const response = await fetch(`http://localhost:5000/getAds?website=${userInput}`)
             const data = await response.json()
             setData(data)
         } catch (error) {
@@ -29,7 +29,7 @@ const SearchBar = () => {
                 <input type="text" placeholder="search" onChange={handleChange}/>
                 <button type="submit">Search</button>
             </form>
-            <h2>{data}</h2>
+            <h5>{data}</h5>
         </div>
     )
 }
