@@ -63,3 +63,8 @@ th {
   background-color: #4CAF50;
   color: white;
 }
+
+.error-div {
+  margin: 50px;
+  text-align: center;
+}

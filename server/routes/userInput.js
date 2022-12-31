@@ -10,7 +10,7 @@ router.get('/getAds', async (req, res) => {
         const domains = getDomains(response)
         res.json(domains)
     } catch (error) {
-        console.log(error)
+        res.status(500).send({ error: error.message })
     }
 })
 
