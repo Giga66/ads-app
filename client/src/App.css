@@ -82,7 +82,7 @@ th {
 
 .current-domain {
   margin: auto;
-  display: flex;
+  display: flex; 
   justify-content: space-around;
   margin-bottom: 15px;
   /* border: 2px solid black; */

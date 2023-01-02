@@ -28,7 +28,8 @@ const Context = () => {
             const response = await fetch(`http://localhost:5000/getAds?website=${userInput}`)
 
             if (!response.ok) {
-                throw new Error('There was an error, please try again')
+                setLoading(false)
+                throw new Error('No ads.txt file to display')
             }
             const data = await response.json()
             setData(data)

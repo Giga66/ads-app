@@ -15,7 +15,7 @@ const parseDomains = (data) => {
         //check if there is a match of a website name in the element
         const match = element.match(domainRegex)
 
-        if (match && !element.includes('=')) {
+        if (match && !element.includes('=') && !element.includes('#')) {
             //catch the domain URL in a variable
             const domainURL = match[0]
             //if the domain URL isn't in the object, add a key with the URL name and a value of 1
