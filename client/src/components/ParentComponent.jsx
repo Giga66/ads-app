@@ -2,11 +2,13 @@ import { useState } from 'react'
 import SearchComponent from './SearchComponent'
 import TableComponent from './TableComponent'
 import CurrentDomain from './CurrentDomain'
+import { SyncLoader } from 'react-spinners'
 
 const Context = () => {
     const defaultWebsite = 'msn.com'
     const [data, setData] = useState('')
     const [userInput, setUserInput] = useState(defaultWebsite)
+    const [loading, setLoading] = useState(false)
     const [websiteName, setWebsiteName] = useState(defaultWebsite)
     const [error, setError] = useState(null)
 
@@ -21,15 +23,17 @@ const Context = () => {
     }
 
     const fetchData = async () => {
+        setLoading(true)
         try {
             const response = await fetch(`http://localhost:5000/getAds?website=${userInput}`)
-            
-            if(!response.ok){
+
+            if (!response.ok) {
                 throw new Error('There was an error, please try again')
             }
             const data = await response.json()
             setData(data)
             setError(null)
+            setLoading(false)
         } catch (error) {
             setData('')
             setError(error.message)
@@ -39,9 +43,15 @@ const Context = () => {
 
     return (
         <div>
-            <SearchComponent handleChange={handleChange} handleSubmit={handleSubmit}/>
-            <CurrentDomain websiteName={websiteName} data={data} fetchData={fetchData}/>
-            <TableComponent data={data} error={error} fetchData={fetchData} />
+            <SearchComponent handleChange={handleChange} handleSubmit={handleSubmit} />
+            <CurrentDomain websiteName={websiteName} data={data} fetchData={fetchData} />
+            {loading ?
+            <div className='loader'>
+                <SyncLoader color='green'/>
+            </div>
+                :
+                <TableComponent data={data} error={error} />
+            }
         </div>
     )
 }

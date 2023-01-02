@@ -1,21 +1,28 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 
-const TableComponent = ({ data, error, fetchData }) => {
+const TableComponent = ({ data, error }) => {
+    const [obj, setObj] = useState(data)
 
-
+    const sortedObject = () => {
+        const sortedKeys = Object.keys(obj).sort()
+        const sortedObject = {}
+        sortedKeys.forEach(key => {
+            sortedObject[key] = obj[key]
+        })
+        setObj(sortedObject)
+    }
 
     return (
         <div className="table-div">
-
             <table>
                 <thead>
                     <tr>
                         <th>
-                            <button className="domain-button" >Domain</button>
+                            <button className="domain-button">Domain</button>
                         </th>
                         <th>
-                            <button className="domain-button" >Count</button>
+                            <button className="domain-button" onClick={sortedObject}>Count</button>
                         </th>
                     </tr>
                 </thead>

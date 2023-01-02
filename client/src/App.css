@@ -1,3 +1,8 @@
+.App {
+  width: 100%;
+  margin: 0;
+}
+
 h1 {
   text-align: center;
 }
@@ -46,7 +51,7 @@ input:focus {
 table {
   border-collapse: collapse;
   width: 100%;
-  border:solid black 1px;
+  border: solid black 1px;
 }
 
 th,
@@ -69,6 +74,12 @@ th {
   text-align: center;
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
 .current-domain {
   margin: auto;
   display: flex;
@@ -82,13 +93,25 @@ th {
   height: 50px;
 }
 
-.domain-button{
+.domain-button {
   background: none;
   border: none;
   color: white;
-  font-size: 16px;font-weight: 600;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .domain-button:hover {
   cursor: pointer;
+}
+
+@media (max-width: 1080px) {
+
+  .App{
+    display: flex;
+  }
+  .table-div{
+    max-width: 100vh;
+    margin-top: 50px;
+  }
 }
