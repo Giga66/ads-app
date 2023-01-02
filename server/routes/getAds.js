@@ -1,16 +1,18 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
-const getDomains = require('../controllers/getDomains')
+const parseDomains = require('../controllers/parseDomains')
 
 router.get('/getAds', async (req, res) => {
     const { website } = req.query
+
     try {
-        const response = await axios.get(`https://${website}/ads.txt`)
-        const domains = getDomains(response)
+        const websiteResponse = await axios.get(`https://${website}/ads.txt`)
+        const domains = parseDomains(websiteResponse.data)
+
         res.json(domains)
     } catch (error) {
-        res.status(500).send({ error: error.message })
+        res.status(500).send({error: error.message})
     }
 })
 

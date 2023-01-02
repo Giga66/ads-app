@@ -22,9 +22,9 @@ input:focus {
   outline: none;
 }
 
-button {
+.search-button {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 6px;
   border: none;
   font-size: 15px;
   width: 100px;
@@ -32,7 +32,7 @@ button {
   color: whitesmoke;
 }
 
-button:hover {
+.search-button:hover {
   cursor: pointer;
   box-shadow: 5px 5px whitesmoke;
 }
@@ -67,4 +67,28 @@ th {
 .error-div {
   margin: 50px;
   text-align: center;
+}
+
+.current-domain {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  /* border: 2px solid black; */
+  border-radius: 6px;
+  box-shadow: 5px 5px 5px #f2f2f2;
+  box-sizing: border-box;
+  width: 1080px;
+  height: 50px;
+}
+
+.domain-button{
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;font-weight: 600;
+}
+
+.domain-button:hover {
+  cursor: pointer;
 }

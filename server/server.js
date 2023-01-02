@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
 
-const userInputRouter = require('./routes/userInput')
+const userInputRouter = require('./routes/getAds')
 
 
 app.use(bodyParser.json())

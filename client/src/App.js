@@ -1,14 +1,10 @@
-import SearchComponent from './components/SearchComponent';
-import TableComponent from './components/TableComponent'
+import ParentComponent  from './components/ParentComponent';
 import './App.css';
-import { useState, useEffect } from 'react';
 
 function App() {
-
   return (
     <div className="App">
-      <SearchComponent/>
-      <TableComponent />
+      <ParentComponent />
     </div>
   );
 }

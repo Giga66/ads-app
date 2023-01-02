@@ -1,7 +1,11 @@
-const getDomains = (response) => {
+const parseDomains = (data) => {
     const domainCount = {}
+
+    if (!data) {
+        return null;
+    }
     //create an array of elements, make a new element on every line break
-    const responseArr = response.data.split('\n')
+    const responseArr = data.split('\n')
 
     //loop through every element of the array
     for (const element of responseArr) {
@@ -17,16 +21,15 @@ const getDomains = (response) => {
             //if the domain URL isn't in the object, add a key with the URL name and a value of 1
             if (!domainCount[domainURL]) {
                 domainCount[domainURL] = 1
-            //if the URL name is there just add 1 to the count
+                //if the URL name is there just add 1 to the count
             } else {
                 domainCount[domainURL]++
             }
         }
     }
-
     return domainCount
 }
 
 
 
-module.exports = getDomains
+module.exports = parseDomains

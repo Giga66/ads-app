@@ -1,0 +1,49 @@
+import { useState } from 'react'
+import SearchComponent from './SearchComponent'
+import TableComponent from './TableComponent'
+import CurrentDomain from './CurrentDomain'
+
+const Context = () => {
+    const defaultWebsite = 'msn.com'
+    const [data, setData] = useState('')
+    const [userInput, setUserInput] = useState(defaultWebsite)
+    const [websiteName, setWebsiteName] = useState(defaultWebsite)
+    const [error, setError] = useState(null)
+
+    const handleChange = e => {
+        setUserInput(e.target.value)
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        await fetchData()
+        setWebsiteName(userInput)
+    }
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`http://localhost:5000/getAds?website=${userInput}`)
+            
+            if(!response.ok){
+                throw new Error('There was an error, please try again')
+            }
+            const data = await response.json()
+            setData(data)
+            setError(null)
+        } catch (error) {
+            setData('')
+            setError(error.message)
+        }
+
+    }
+
+    return (
+        <div>
+            <SearchComponent handleChange={handleChange} handleSubmit={handleSubmit}/>
+            <CurrentDomain websiteName={websiteName} data={data} fetchData={fetchData}/>
+            <TableComponent data={data} error={error} fetchData={fetchData} />
+        </div>
+    )
+}
+
+export default Context
