@@ -22,7 +22,6 @@ const CurrentDomain = ({ websiteName, data, fetchData }) => {
             <CSVLink data={arr} style={{marginTop: 15}}>
                 Export To CSV
             </CSVLink>
-            {console.log(arr)}
         </div>
     )
 }

@@ -5,7 +5,7 @@ import CurrentDomain from './CurrentDomain'
 import { SyncLoader } from 'react-spinners'
 
 const Context = () => {
-    const defaultWebsite = 'msn.com'
+    const defaultWebsite = 'google.com'
     const [data, setData] = useState('')
     const [userInput, setUserInput] = useState(defaultWebsite)
     const [loading, setLoading] = useState(false)
@@ -26,12 +26,12 @@ const Context = () => {
         setLoading(true)
         try {
             const response = await fetch(`http://localhost:5000/getAds?website=${userInput}`)
-
-            if (!response.ok) {
-                setLoading(false)
-                throw new Error('No ads.txt file to display')
-            }
             const data = await response.json()
+
+            if (response.status === 404) {
+                setLoading(false)
+                setError(data.message)
+            }
             setData(data)
             setError(null)
             setLoading(false)

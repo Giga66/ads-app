@@ -10,9 +10,16 @@ router.get('/getAds', async (req, res) => {
         const websiteResponse = await axios.get(`https://${website}/ads.txt`)
         const domains = parseDomains(websiteResponse.data)
 
+        if (!domains || Object.entries(domains).length === 0) {
+            return res.status(200).json({message: `No ads.txt file`})
+        }
+        if(websiteResponse.error === 500){
+            return res.status(405).json({message: `check domain name`})
+        }
+
         res.json(domains)
     } catch (error) {
-        res.status(500).send({error: error.message})
+        res.status(500).json({ message: error.message })
     }
 })
 
