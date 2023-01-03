@@ -7,7 +7,7 @@
     "concurrently": "^7.6.0"
   },
   "scripts": {
-    "start:client": "cd client && npm start",
+    "start:client": "cd client && npm install && npm start",
     "start:server": "cd server && node server.js",
     "start": "concurrently --kill-others-on-fail \"npm run start:client\" \"npm run start:server\"",
     "build": "babel src --out-dir dist"
