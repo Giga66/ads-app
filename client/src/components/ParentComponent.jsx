@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SearchComponent from './SearchComponent'
 import TableComponent from './TableComponent'
 import CurrentDomain from './CurrentDomain'
 import { SyncLoader } from 'react-spinners'
 
 const Context = () => {
-    const defaultWebsite = 'google.com'
-    const [data, setData] = useState('')
+    const defaultWebsite = 'msn.com'
+    const [data, setData] = useState(null)
+    const [parseTime, setParseTime] = useState(0)
     const [userInput, setUserInput] = useState(defaultWebsite)
     const [loading, setLoading] = useState(false)
     const [websiteName, setWebsiteName] = useState(defaultWebsite)
@@ -16,11 +17,18 @@ const Context = () => {
         setUserInput(e.target.value)
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
+        fetchDataAndMeasureTime()
+    }
+
+    const fetchDataAndMeasureTime = async () => {
+        const start = performance.now();
         await fetchData()
+        setParseTime(performance.now() - start)
         setWebsiteName(userInput)
     }
+
 
     const fetchData = async () => {
         setLoading(true)
@@ -28,30 +36,37 @@ const Context = () => {
             const response = await fetch(`http://localhost:5000/getAds?website=${userInput}`)
             const data = await response.json()
 
-            if (response.status === 404) {
-                setLoading(false)
-                setError(data.message)
+            if (!response.ok) {
+                setError(data.error)
+                setData(null)
+                // console.log(data.error)
+            } else {
+                setData(data)
+                setError(null)
             }
-            setData(data)
-            setError(null)
-            setLoading(false)
         } catch (error) {
-            setData('')
+            setData(null)
             setError(error.message)
+        } finally {
+            setLoading(false)
         }
 
     }
 
+    useEffect(() => {
+        fetchDataAndMeasureTime()
+    }, [])
+
     return (
         <div>
             <SearchComponent handleChange={handleChange} handleSubmit={handleSubmit} />
-            <CurrentDomain websiteName={websiteName} data={data} fetchData={fetchData} />
+            <CurrentDomain websiteName={websiteName} data={data} parseTime={parseTime} />
             {loading ?
-            <div className='loader'>
-                <SyncLoader color='green'/>
-            </div>
-                :
-                <TableComponent data={data} error={error} />
+                <div className='loader'>
+                    <SyncLoader color='green' />
+                </div>
+                : error ? <div className='error-div'>{error}</div> :
+                    <TableComponent data={data} />
             }
         </div>
     )

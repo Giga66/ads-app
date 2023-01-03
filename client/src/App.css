@@ -93,6 +93,17 @@ th {
   height: 50px;
 }
 
+.error-div{
+  text-align: center;
+  background-color: #fef2f2;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 6px;
+  color: red;
+}
+
 .domain-button {
   background: none;
   border: none;
