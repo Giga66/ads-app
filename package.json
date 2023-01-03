@@ -3,13 +3,12 @@
     "react-csv": "^2.2.2",
     "react-spinners": "^0.13.7"
   },
-  "devDependencies": {
-    "concurrently": "^7.6.0"
-  },
   "scripts": {
-    "start:client": "cd client && npm install && npm start",
-    "start:server": "cd server && node server.js",
-    "start": "concurrently --kill-others-on-fail \"npm run start:client\" \"npm run start:server\"",
-    "build": "babel src --out-dir dist"
+    "setup-production" : "npm run install-client && npm run build-client && npm install",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "server": "nodemon server --ignore client",
+    "client": "npm start --prefix client",
+    "start": "node server.js"
   }
 }

@@ -13,9 +13,6 @@ router.get('/getAds', async (req, res) => {
         if (!domains || Object.entries(domains).length === 0) {
             return res.status(200).json({message: `No ads.txt file`})
         }
-        if(websiteResponse.error === 500){
-            return res.status(405).json({message: `check domain name`})
-        }
 
         res.json(domains)
     } catch (error) {
