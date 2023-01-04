@@ -39,7 +39,6 @@ const ParentComponent = () => {
             if (!response.ok) {
                 setError(data.error)
                 setData(null)
-                // console.log(data.error)
             } else {
                 setData(data)
                 setError(null)
