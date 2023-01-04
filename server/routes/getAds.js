@@ -13,19 +13,12 @@ router.get('/getAds', cache('5 minutes'), async (req, res) => {
         const domains = parseDomains(websiteResponse.data)
 
         if (!domains || Object.entries(domains).length === 0) {
-            return res.status(404).send({error: 'No ads.txt file'})
+            return res.status(404).send({ error: 'No ads.txt file' })
         }
 
         res.json(domains)
     } catch (error) {
-        if (error.code === 'ENOTFOUND') {
-            return res.status(404).send({ error: 'Check Requested domain name' })
-        } 
-        if (error.response.status === 404) {
-            return res.status(404).send({ error: 'no ads.txt file' })
-        }
-        return res.status(error?.status || 500).json({ error: error.message })
-
+        res.status(error?.status || 500).json({ error: 'Failed to parse Ads.txt'})
     }
 })
 
