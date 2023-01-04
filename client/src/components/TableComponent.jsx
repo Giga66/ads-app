@@ -3,17 +3,21 @@ import { useEffect, useState } from "react"
 const TableComponent = ({ data }) => {
     const [rows, setRows] = useState([])
 
+    let isSorted = false
+
     useEffect(() => {
         if (data) {
-            setRows(Object.entries(data))
+            if(isSorted){
+                setRows(rows)
+            }else{
+                setRows(Object.entries(data))
+            }
         }
     }, [data])
     
     
-    
     const sortWebsites = () => {
-        const sortedRows = rows.sort((a, b) => b[1] - a[1])
-        setRows(sortedRows)
+        rows.sort((a, b) => a[1] - b[1]); isSorted = true
     }
 
 
