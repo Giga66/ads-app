@@ -4,7 +4,7 @@ import TableComponent from './TableComponent'
 import CurrentDomain from './CurrentDomain'
 import { SyncLoader } from 'react-spinners'
 
-const Context = () => {
+const ParentComponent = () => {
     const defaultWebsite = 'msn.com'
     const [data, setData] = useState(null)
     const [parseTime, setParseTime] = useState(0)
@@ -72,4 +72,4 @@ const Context = () => {
     )
 }
 
-export default Context
+export default ParentComponent

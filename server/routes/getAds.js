@@ -2,8 +2,10 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 const parseDomains = require('../controllers/parseDomains')
+var cacheService = require("express-api-cache");
+var cache = cacheService.cache;
 
-router.get('/getAds', async (req, res) => {
+router.get('/getAds', cache('5 minutes'), async (req, res) => {
     const { website } = req.query
 
     try {
@@ -16,7 +18,6 @@ router.get('/getAds', async (req, res) => {
 
         res.json(domains)
     } catch (error) {
-        // console.log(error)
         if (error.code === 'ENOTFOUND') {
             return res.status(404).send({ error: 'Check Requested domain name' })
         } 
