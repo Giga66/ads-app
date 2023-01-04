@@ -62,7 +62,7 @@ const ParentComponent = () => {
             <CurrentDomain websiteName={websiteName} data={data} parseTime={parseTime} />
             {loading ?
                 <div className='loader'>
-                    <SyncLoader color='green' />
+                    <SyncLoader color='#242a55' />
                 </div>
                 : error ? <div className='error-div'>{error}</div> :
                     <TableComponent data={data} />

@@ -45,13 +45,15 @@ input:focus {
 .table-div {
   max-width: 1080px;
   margin: auto;
-  border-radius: 6px;
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
-  border: solid black 1px;
+  border: solid gray 1px;
+  box-shadow: 10px 5px 10px whitesmoke;
+  border-radius: 15px;
+  margin-bottom: 50px;
 }
 
 th,
@@ -65,7 +67,7 @@ tr:nth-child(even) {
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #242a55;
   color: white;
 }
 
