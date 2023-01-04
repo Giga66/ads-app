@@ -10,8 +10,8 @@ const TableComponent = ({ data }) => {
     }, [data])
 
 
-    
     const sortedWebsites = rows.sort((a, b) => b[1] - a[1])
+    
     const sortWebsites = () => {
         setRows(sortedWebsites)
     }
