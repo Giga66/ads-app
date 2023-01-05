@@ -5,9 +5,7 @@
   },
   "scripts": {
     "setup-production" : "npm run install-client && npm install",
-    "install-client": "cd client && npm run build && npm install",
-    "server": "nodemon server --ignore client",
-    "client": "npm start --prefix client",
+    "install-client": "cd client && npm install && npm run build",
     "start": "cd server && node server.js"
   }
 }
