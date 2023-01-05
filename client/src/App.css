@@ -118,22 +118,6 @@ th {
   cursor: pointer;
 }
 
-/* @media (min-width: 390px) {
-
-  .App{
-    display: flex;
-  }
-
-  input{
-    box-shadow: 5px 5px 5px 5px whitesmoke;
-  }
-
-  .table-div{
-    max-width: 100vh;
-    margin-top: 50px;
-  }
-} */
-
 @media (max-width: 500px) {
   input {
     width: 90%;
@@ -167,7 +151,7 @@ th {
   }
 
   .table-div {
-    margin-left: 20px;
+    margin-left: 40px;
   }
 }
 
