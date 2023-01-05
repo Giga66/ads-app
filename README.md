@@ -1,6 +1,6 @@
 # Ads.txt Parser
 
-This website allows you to parse an ads.txt file of a given domain and display the websites and their frequency of appearance.
+This website allows you to parse an ads.txt file of a given domain and display the websites in the list and their frequency of appearance.
 
 ## Features
 
