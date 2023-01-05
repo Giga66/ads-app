@@ -10,7 +10,7 @@ This website allows you to parse an ads.txt file of a given domain and display t
 
 ## Getting Started
 
-1. Visit the website at [[http://cnn.com](https://adds-parser.onrender.com)](https://adds-parser.onrender.com)
+1. Visit the website at https://adds-parser.onrender.com
 2. Enter the domain of the ads.txt file you want to parse
 3. The app will fetch the ads.txt file and display the results in a table
 
