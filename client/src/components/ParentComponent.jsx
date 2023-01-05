@@ -33,7 +33,7 @@ const ParentComponent = () => {
     const fetchData = async () => {
         setLoading(true)
         try {
-            const response = await fetch(`http://localhost:5000/getAds?website=${userInput}`)
+            const response = await fetch(`getAds?website=${userInput}`)
             const data = await response.json()
 
             if (!response.ok) {

@@ -17,7 +17,7 @@ const parseDomains = (data) => {
 
         if (match && !element.includes('=') && !element.includes('#')) {
             //catch the domain URL in a variable
-            const domainURL = match[0].toLoweCase()
+            const domainURL = match[0].toLowerCase()
             //if the domain URL isn't in the object, add a key with the URL name and a value of 1
             if (!domainCount[domainURL]) {
                 domainCount[domainURL] = 1
