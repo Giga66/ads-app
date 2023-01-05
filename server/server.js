@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
 const path = require('path')
+const port = process.env.PORT || 5000
 
 const userInputRouter = require('./routes/getAds')
 
@@ -16,6 +17,6 @@ app.use(cors())
 app.use(userInputRouter)
 
 
-app.listen(80, () => {
-    console.log('Server is listening')
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`)
 })

@@ -1,27 +1,20 @@
 import { useEffect, useState } from "react"
-import { BsFillArrowDownSquareFill, BsFillArrowUpSquareFill } from 'react-icons'
+import { BsFillArrowDownSquareFill, BsFillArrowUpSquareFill } from 'react-icons/bs'
 
 const TableComponent = ({ data }) => {
-    const [rows, setRows] = useState([])
+    const [rows, setRows] = useState(data? Object.entries(data) : [])
     const [ascending, setAscending] = useState(true)
 
-    useEffect(() => {
-        if (data) {
-            setRows(Object.entries(data))
-        }
-    }, [data])
-
-
-
     const sortWebsites = () => {
-        if (ascending) {
-            setRows([...rows].sort((a, b) => b[1] - a[1]))
-            setAscending(false)
-        } else {
-            setRows([...rows].sort((a, b) => a[1] - b[1]))
-            setAscending(true)
-        }
+        setRows([...rows].sort((a, b) => ascending ? b[1] - a[1] : a[1] - b[1]))
+        setAscending((prevState) => !prevState)
     }
+
+
+    useEffect(() => {
+        sortWebsites()
+    }, [])
+
 
 
     return (
@@ -33,7 +26,7 @@ const TableComponent = ({ data }) => {
                             <button className="domain-button">Domain</button>
                         </th>
                         <th>
-                            <button className="domain-button" onClick={sortWebsites}>Count {ascending ? <BsFillArrowDownSquareFill /> : <BsFillArrowDownSquareFill />}</button>
+                            <button className="domain-button" onClick={sortWebsites}>Count {ascending ? <BsFillArrowUpSquareFill /> : <BsFillArrowDownSquareFill />}</button>
                         </th>
                     </tr>
                 </thead>
