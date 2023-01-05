@@ -84,7 +84,7 @@ th {
 
 .current-domain {
   margin: auto;
-  display: flex; 
+  display: flex;
   justify-content: space-around;
   margin-bottom: 15px;
   /* border: 2px solid black; */
@@ -95,7 +95,7 @@ th {
   height: 50px;
 }
 
-.error-div{
+.error-div {
   text-align: center;
   background-color: #fef2f2;
   max-width: 500px;
@@ -118,13 +118,81 @@ th {
   cursor: pointer;
 }
 
-@media (max-width: 1080px) {
+/* @media (min-width: 390px) {
 
   .App{
     display: flex;
   }
+
+  input{
+    box-shadow: 5px 5px 5px 5px whitesmoke;
+  }
+
   .table-div{
     max-width: 100vh;
     margin-top: 50px;
+  }
+} */
+
+@media (max-width: 500px) {
+  input {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+
+  .current-domain {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+    margin-left: 15px;
+  }
+
+  form {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: 66px;
+  }
+
+  .main-div {
+    /* margin: 0 auto; */
+    text-align: center;
+  }
+
+
+  table {
+    width: 90%;
+  }
+
+  .table-div {
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 900px) and (orientation: landscape) {
+  input {
+    width: 300px;
+  }
+
+  .table-div {
+    width: 90%;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 900px) {
+  input {
+    width: 300px;
+  }
+
+  .current-domain {
+    /* max-width: fit-content; */
+    width: 750px;
+    height: 50px;
+    display: flex;
+  }
+
+  .table-div {
+    width: 90%;
   }
 }
