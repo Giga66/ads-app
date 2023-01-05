@@ -16,6 +16,6 @@ app.use(cors())
 app.use(userInputRouter)
 
 
-app.listen(5000, () => {
+app.listen(80, () => {
     console.log('Server is listening')
 })
