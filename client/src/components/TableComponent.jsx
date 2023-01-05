@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
+import { BsFillArrowDownSquareFill, BsFillArrowUpSquareFill } from 'react-icons'
 
 const TableComponent = ({ data }) => {
     const [rows, setRows] = useState([])
+    const [ascending, setAscending] = useState(true)
 
     useEffect(() => {
         if (data) {
@@ -10,10 +12,15 @@ const TableComponent = ({ data }) => {
     }, [data])
 
 
-    
+
     const sortWebsites = () => {
-        const sortedWebsites = [...rows].sort((a, b) => b[1] - a[1])
-        setRows(sortedWebsites)
+        if (ascending) {
+            setRows([...rows].sort((a, b) => b[1] - a[1]))
+            setAscending(false)
+        } else {
+            setRows([...rows].sort((a, b) => a[1] - b[1]))
+            setAscending(true)
+        }
     }
 
 
@@ -26,7 +33,7 @@ const TableComponent = ({ data }) => {
                             <button className="domain-button">Domain</button>
                         </th>
                         <th>
-                            <button className="domain-button" onClick={sortWebsites}>Count</button>
+                            <button className="domain-button" onClick={sortWebsites}>Count {ascending ? <BsFillArrowDownSquareFill /> : <BsFillArrowDownSquareFill />}</button>
                         </th>
                     </tr>
                 </thead>
