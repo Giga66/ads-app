@@ -138,6 +138,7 @@ th {
   input {
     width: 90%;
     margin-bottom: 20px;
+    border: black solid 1px;
   }
 
 
@@ -166,7 +167,7 @@ th {
   }
 
   .table-div {
-    margin-left: 10px;
+    margin-left: 20px;
   }
 }
 
